@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - SafeHer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="login-wrap">
+        <div class="login-card">
+            <div class="login-head">
+                <div class="brand-wrap login-brand" style="margin:0;">
+                    <img class="brand-logo brand-logo-lg" src="{{ url_for('static', filename='images/safeher-logo.svg') }}" alt="SafeHer Logo">
+                    <div class="brand-text">SafeHer</div>
+                    <h2 style="margin:4px 0 0;">User Register</h2>
+                    <p class="login-tagline">Your Safety, Your Power</p>
+                </div>
+            </div>
+            <div class="login-body">
+                <form onsubmit="wsApp.registerUser(event)">
+                    <label for="regName">Full Name</label>
+                    <input id="regName" required placeholder="Enter your name">
+                    <label for="regPhone">Phone Number</label>
+                    <div class="phone-field">
+                        <select id="regCountryCode" class="country-code-select"></select>
+                        <input id="regPhone" required placeholder="xxxxxxxxxx">
+                    </div>
+                    <div style="margin-top:12px;">
+                        <button class="btn btn-primary" type="submit">Register</button>
+                    </div>
+                    <p id="registerMessage" style="font-weight:700;"></p>
+                    <p class="muted">Already registered? <a href="/">Go to login</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+    <script>
+        wsApp.initTheme();
+    </script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="420" viewBox="0 0 420 420" role="img" aria-label="SafeHer logo">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#55bde8"/>
+      <stop offset="100%" stop-color="#1f63b6"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="420" height="420" rx="30" fill="none"/>
+
+  <path d="M210 38 85 90c0 122 50 193 125 247 75-54 125-125 125-247L210 38z"
+        fill="url(#g1)" stroke="#ffffff" stroke-width="10"/>
+  <path d="M210 62 107 105c0 101 40 160 103 208 63-48 103-107 103-208L210 62z"
+        fill="none" stroke="white" stroke-width="7"/>
+
+  <path d="M242 126c-22 6-36 24-44 48-12 36-29 59-78 76 41 0 71-19 92-49 20-29 37-58 66-72-13-6-23-8-36-3z"
+        fill="#ffffff" opacity="0.97"/>
+  <path d="M226 185c-10 21-16 41-5 69-22-8-31-25-35-50 8-6 18-12 40-19z"
+        fill="#ffffff" opacity="0.97"/>
+  <circle cx="306" cy="86" r="6" fill="#ffffff" opacity="0.9"/>
+</svg>

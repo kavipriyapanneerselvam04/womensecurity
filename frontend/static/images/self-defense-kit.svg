@@ -1,0 +1,17 @@
+<svg width="640" height="420" viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="420" rx="28" fill="#FFF4EC"/>
+  <rect x="82" y="104" width="126" height="188" rx="22" fill="#2B5A86"/>
+  <rect x="96" y="126" width="98" height="126" rx="14" fill="#EAF5FF"/>
+  <circle cx="145" cy="272" r="8" fill="#EAF5FF"/>
+  <rect x="256" y="116" width="98" height="164" rx="22" fill="#FFE082"/>
+  <rect x="280" y="84" width="50" height="44" rx="18" fill="#FFB648"/>
+  <path d="M428 118C428 93.6995 447.699 74 472 74C496.301 74 516 93.6995 516 118V152H428V118Z" fill="#FF5F7D"/>
+  <rect x="416" y="152" width="112" height="120" rx="24" fill="#FFD7E1"/>
+  <circle cx="472" cy="202" r="22" fill="#FF5F7D"/>
+  <path d="M112 336H196" stroke="#2B5A86" stroke-width="12" stroke-linecap="round"/>
+  <path d="M274 336H338" stroke="#2B5A86" stroke-width="12" stroke-linecap="round"/>
+  <path d="M430 336H514" stroke="#2B5A86" stroke-width="12" stroke-linecap="round"/>
+  <text x="154" y="368" text-anchor="middle" fill="#2B5A86" font-family="Arial, sans-serif" font-size="24" font-weight="700">Phone</text>
+  <text x="306" y="368" text-anchor="middle" fill="#2B5A86" font-family="Arial, sans-serif" font-size="24" font-weight="700">Torch</text>
+  <text x="472" y="368" text-anchor="middle" fill="#2B5A86" font-family="Arial, sans-serif" font-size="24" font-weight="700">Alarm</text>
+</svg>

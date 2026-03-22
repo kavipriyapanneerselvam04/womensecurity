@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Status</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="logo brand-wrap"><div class="brand-text">SafeHer</div><img class="brand-logo" src="{{ url_for('static', filename='images/safeher-logo.svg') }}" alt="SafeHer Logo"></div>
+            <nav class="menu">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/live-location">Live Tracking</a>
+                <a href="/geofence-page">Geo-Fence</a>
+                <a class="active" href="/device-status">Device Status</a>
+                <a href="/user-management">User Management</a>
+                <a href="/alert-history">Alert History</a>
+                <a href="/self-defense">Self Defense</a>
+                <a href="/profile-page">Profile</a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn btn-danger menu-logout" type="button" onclick="wsApp.logoutUser()">Logout</button>
+            </div>
+        </aside>
+        <main class="main">
+            <div class="topbar">
+                <h1>Wearable Device Status</h1>
+                <div id="gpsState" class="muted" style="color:#f0eaff;">Awaiting GPS state...</div>
+                <div class="topbar-actions">
+                    <button class="btn btn-ghost theme-toggle" type="button" aria-label="Toggle theme"><span class="theme-icon">&#9789;</span></button>
+                </div>
+            </div>
+            <div class="content-grid cards-2">
+                <div class="card">
+                    <h3>Modules</h3>
+                    <p>GPS: <span class="tag tag-ok">Connected</span></p>
+                    <p>GSM Network: <span class="tag tag-ok">Connected</span></p>
+                    <p>Battery: <span class="tag tag-ok">80%</span></p>
+                    <p>MPU6050 Sensor: <span class="tag tag-ok">Simulated Active</span></p>
+                    <p>Geo-Fence: <span class="tag tag-ok">Enabled</span></p>
+                </div>
+                <div class="card">
+                    <h3>Test Buttons</h3>
+                    <div class="action-row">
+                        <button class="btn btn-primary" onclick="wsApp.showCurrentLocation()">Show Current Location</button>
+                        <button class="btn btn-primary" onclick="wsApp.simulateMovement()">Simulate GPS</button>
+                        <button class="btn btn-warn" onclick="wsApp.triggerFallAlert()">Simulate Fall</button>
+                        <button class="btn btn-danger" onclick="wsApp.triggerPanicAlert()">Emergency Panic Button</button>
+                    </div>
+                    <p id="actionMessage" class="muted"></p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+    <script>
+        (async () => {
+            await wsApp.ensureSession();
+            wsApp.initTheme();
+            wsApp.attachLiveBrowserLocation();
+        })();
+    </script>
+</body>
+</html>
+
+
+
+

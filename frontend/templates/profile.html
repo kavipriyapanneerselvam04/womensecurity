@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="logo brand-wrap"><div class="brand-text">SafeHer</div><img class="brand-logo" src="{{ url_for('static', filename='images/safeher-logo.svg') }}" alt="SafeHer Logo"></div>
+            <nav class="menu">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/live-location">Live Tracking</a>
+                <a href="/geofence-page">Geo-Fence</a>
+                <a href="/device-status">Device Status</a>
+                <a href="/user-management">User Management</a>
+                <a href="/alert-history">Alert History</a>
+                <a href="/self-defense">Self Defense</a>
+                <a class="active" href="/profile-page">Profile</a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn btn-danger menu-logout" type="button" onclick="wsApp.logoutUser()">Logout</button>
+            </div>
+        </aside>
+        <main class="main">
+            <div class="topbar">
+                <h1>SafeHer Profile</h1>
+                <div class="topbar-actions">
+                    <button class="btn btn-ghost theme-toggle" type="button" aria-label="Toggle theme"><span class="theme-icon">&#9789;</span></button>
+                </div>
+            </div>
+            <div class="profile-wrap">
+                <div class="profile-hero">
+                    <div class="avatar-wrap">
+                        <div id="profileInitial" class="profile-avatar">S</div>
+                        <img id="profilePhoto" alt="Profile Photo" class="profile-avatar" style="display:none;object-fit:cover;">
+                        <label class="avatar-upload-plus" for="profilePhotoInput">+</label>
+                        <input class="avatar-file" type="file" id="profilePhotoInput" accept=".png,.jpg,.jpeg,.webp" onchange="wsApp.uploadProfilePhoto(event)">
+                    </div>
+                    <div>
+                        <h2 id="profileName" style="margin:0;">-</h2>
+                        <div class="profile-badges" style="margin-top:8px;">
+                            <span class="tag tag-ok">User Role: <span id="profileRole">-</span></span>
+                            <span class="tag tag-ok"><span id="profileContactCount">0</span> Contacts</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-body">
+                    <h3>Contact Information</h3>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="muted">Phone Number</div>
+                            <div id="profilePhone"><b>-</b></div>
+                        </div>
+                        <div class="info-card">
+                            <div class="muted">Date of Birth</div>
+                            <input type="date" id="profileDobInput">
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top:18px;">Personal Details</h3>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="muted">Full Name</div>
+                            <input type="text" id="profileNameInput" placeholder="Enter full name">
+                        </div>
+                        <div class="info-card">
+                            <div class="muted">Parent Name</div>
+                            <input type="text" id="profileParentInput" placeholder="Enter parent name">
+                        </div>
+                        <div class="info-card">
+                            <div class="muted">Warden Name</div>
+                            <input type="text" id="profileWardenInput" placeholder="Enter warden name">
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top:18px;">Address Details</h3>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="muted">College Address</div>
+                            <textarea id="profileCollegeAddressInput" rows="3" placeholder="Enter college address"></textarea>
+                        </div>
+                        <div class="info-card">
+                            <div class="muted">Home Address</div>
+                            <textarea id="profileHomeAddressInput" rows="3" placeholder="Enter home address"></textarea>
+                        </div>
+                    </div>
+                    <div style="margin-top:8px;">
+                        <button class="btn btn-primary" type="button" onclick="wsApp.saveProfileDetails()">Save Profile Details</button>
+                        <span id="profileAddressMessage" class="muted" style="margin-left:8px;"></span>
+                    </div>
+
+                    <h3 style="margin-top:18px;">Account Management</h3>
+                    <div class="action-row">
+                        <a class="btn btn-primary" href="/user-management" style="text-decoration:none;">Edit Contacts</a>
+                        <a class="btn btn-ghost" href="/geofence-page" style="text-decoration:none;">Update Geo-Fence</a>
+                        <button class="btn btn-danger" type="button" onclick="wsApp.deleteAccountPermanently()">Delete Account Permanently</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+    <script>
+        (async () => {
+            wsApp.initTheme();
+            await wsApp.loadProfilePage();
+        })();
+    </script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="logo brand-wrap"><div class="brand-text">SafeHer</div><img class="brand-logo" src="{{ url_for('static', filename='images/safeher-logo.svg') }}" alt="SafeHer Logo"></div>
+            <nav class="menu">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/live-location">Live Tracking</a>
+                <a href="/geofence-page">Geo-Fence</a>
+                <a href="/device-status">Device Status</a>
+                <a class="active" href="/user-management">User Management</a>
+                <a href="/alert-history">Alert History</a>
+                <a href="/self-defense">Self Defense</a>
+                <a href="/profile-page">Profile</a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn btn-danger menu-logout" type="button" onclick="wsApp.logoutUser()">Logout</button>
+            </div>
+        </aside>
+        <main class="main">
+            <div class="topbar">
+                <h1>User Management (Warden / Parent / Guardian)</h1>
+                <div class="muted" style="color:#f0eaff;">These numbers receive SMS alerts</div>
+                <div class="topbar-actions">
+                    <button class="btn btn-ghost theme-toggle" type="button" aria-label="Toggle theme"><span class="theme-icon">&#9789;</span></button>
+                </div>
+            </div>
+            <div class="content-grid cards-2">
+                <div class="card">
+                    <h3>Add Contact</h3>
+                    <form id="addUserForm" onsubmit="wsApp.addUser(event)">
+                        <label for="newUserName">Name</label>
+                        <input id="newUserName" required placeholder="e.g. Hostel Warden">
+                        <label for="newUserPhone">Phone</label>
+                        <div class="phone-field">
+                            <select id="newUserCountryCode" class="country-code-select"></select>
+                            <input id="newUserPhone" required placeholder="xxxxxxxxxx">
+                        </div>
+                        <label for="newUserRole">Role</label>
+                        <select id="newUserRole">
+                            <option value="warden">Warden</option>
+                            <option value="guardian">Guardian</option>
+                            <option value="parent">Parent</option>
+                        </select>
+                        <label style="display:flex;gap:8px;align-items:center;margin-top:12px;">
+                            <input id="newUserNotify" type="checkbox" checked style="width:auto;"> Enable SMS notifications
+                        </label>
+                        <button class="btn btn-primary" type="submit" style="margin-top:10px;">Add User</button>
+                    </form>
+                    <p id="userFormMessage" class="muted"></p>
+                </div>
+                <div class="card">
+                    <h3>Registered Contacts</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>Phone</th>
+                                <th>SMS</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+    <script>
+        (async () => {
+            await wsApp.ensureSession();
+            wsApp.initTheme();
+            wsApp.loadUsersTable();
+        })();
+    </script>
+</body>
+</html>
+
+
+
+

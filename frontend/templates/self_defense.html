@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self Defense</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="logo brand-wrap"><div class="brand-text">SafeHer</div><img class="brand-logo" src="{{ url_for('static', filename='images/safeher-logo.svg') }}" alt="SafeHer Logo"></div>
+            <nav class="menu">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/live-location">Live Tracking</a>
+                <a href="/geofence-page">Geo-Fence</a>
+                <a href="/device-status">Device Status</a>
+                <a href="/user-management">User Management</a>
+                <a href="/alert-history">Alert History</a>
+                <a class="active" href="/self-defense">Self Defense</a>
+                <a href="/profile-page">Profile</a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn btn-danger menu-logout" type="button" onclick="wsApp.logoutUser()">Logout</button>
+            </div>
+        </aside>
+        <main class="main">
+            <div class="topbar">
+                <h1>Self Defense Guide</h1>
+                <div class="topbar-info">
+                    <div class="muted" style="color:#f0eaff;">User: <span id="currentUserName">-</span></div>
+                    <div class="muted" style="color:#f0eaff;">Learn practical awareness, escape steps, and travel readiness.</div>
+                </div>
+                <div class="topbar-actions">
+                    <button class="btn btn-ghost theme-toggle" type="button" aria-label="Toggle theme"><span class="theme-icon">&#9789;</span></button>
+                </div>
+            </div>
+
+            <section class="content-grid">
+                <div class="card self-defense-hero">
+                    <div class="visual-hero">
+                        <div>
+                            <h2 class="section-title">Escape First</h2>
+                            <p style="margin-top:0;">Use voice, balance, and space. The goal is to break contact and reach safety fast.</p>
+                            <div class="micro-grid">
+                                <div class="micro-card">
+                                    <b>See</b>
+                                    Notice exits and people.
+                                </div>
+                                <div class="micro-card">
+                                    <b>Alert</b>
+                                    Shout "Stop" or "Help".
+                                </div>
+                                <div class="micro-card">
+                                    <b>Fight</b>
+                                    Only to create space.
+                                </div>
+                                <div class="micro-card">
+                                    <b>Exit</b>
+                                    Move to light and crowd.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="learning-visual">
+                            <img src="{{ url_for('static', filename='images/self-defense-stance.svg') }}" alt="Self defense ready stance illustration">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-grid cards-2" style="margin-top:14px;">
+                <div class="card">
+                    <h2 class="section-title">4 Quick Moves</h2>
+                    <div class="visual-list">
+                        <div class="visual-step">
+                            <div class="step-badge">1</div>
+                            <div><b>Ready stance</b><div class="muted">One leg back. Hands up. Chin down.</div></div>
+                        </div>
+                        <div class="visual-step">
+                            <div class="step-badge">2</div>
+                            <div><b>Break the grab</b><div class="muted">Turn toward the thumb gap and pull free.</div></div>
+                        </div>
+                        <div class="visual-step">
+                            <div class="step-badge">3</div>
+                            <div><b>Hit and move</b><div class="muted">Eyes, nose, groin, shin, then leave.</div></div>
+                        </div>
+                        <div class="visual-step">
+                            <div class="step-badge">4</div>
+                            <div><b>Use what you carry</b><div class="muted">Bag, bottle, umbrella, torch as barrier.</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2 class="section-title">Travel Smart</h2>
+                    <div class="learning-visual">
+                        <img src="{{ url_for('static', filename='images/self-defense-travel.svg') }}" alt="Travel safety visual guide">
+                    </div>
+                    <div class="compact-points" style="margin-top:12px;">
+                        <div class="compact-point"><b>Before leaving:</b> Share route and charge phone.</div>
+                        <div class="compact-point"><b>While moving:</b> Choose bright roads and verified transport.</div>
+                        <div class="compact-point"><b>While waiting:</b> Stay near shops, families, or guards.</div>
+                        <div class="compact-point"><b>If uneasy:</b> Trust your instinct and leave early.</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-grid cards-2" style="margin-top:14px;">
+                <div class="card">
+                    <h2 class="section-title">Carry These Essentials</h2>
+                    <div class="learning-visual">
+                        <img src="{{ url_for('static', filename='images/self-defense-kit.svg') }}" alt="Safety kit illustration for solo travel">
+                    </div>
+                    <div class="icon-grid" style="margin-top:12px;">
+                        <div class="icon-pill"><span>📱</span><b>Phone</b><div class="muted">Calls + live tracking</div></div>
+                        <div class="icon-pill"><span>🔋</span><b>Power Bank</b><div class="muted">Battery backup</div></div>
+                        <div class="icon-pill"><span>🔦</span><b>Torch</b><div class="muted">Light + attention</div></div>
+                        <div class="icon-pill"><span>🚨</span><b>Alarm</b><div class="muted">Loud sound</div></div>
+                        <div class="icon-pill"><span>📣</span><b>Whistle</b><div class="muted">Quick signal</div></div>
+                        <div class="icon-pill"><span>🪪</span><b>ID + Cash</b><div class="muted">Emergency backup</div></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2 class="section-title">If Trouble Starts</h2>
+                    <div class="visual-list">
+                        <div class="visual-step">
+                            <div class="step-badge">A</div>
+                            <div><b>Move</b><div class="muted">Go to light, people, cameras.</div></div>
+                        </div>
+                        <div class="visual-step">
+                            <div class="step-badge">B</div>
+                            <div><b>Call</b><div class="muted">Tell someone your exact location.</div></div>
+                        </div>
+                        <div class="visual-step">
+                            <div class="step-badge">C</div>
+                            <div><b>Share</b><div class="muted">Use SafeHer live location quickly.</div></div>
+                        </div>
+                        <div class="visual-step">
+                            <div class="step-badge">D</div>
+                            <div><b>Escape</b><div class="muted">Use tools only to create space.</div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-grid" style="margin-top:14px;">
+                <div class="card">
+                    <h2 class="section-title">Practice In 5 Minutes</h2>
+                    <div class="compact-points">
+                        <div class="compact-point"><b>1 min:</b> Ready stance in front of a mirror.</div>
+                        <div class="compact-point"><b>1 min:</b> Loud voice practice: "Stop", "Back off", "Help".</div>
+                        <div class="compact-point"><b>1 min:</b> Open alarm, torch, and phone fast.</div>
+                        <div class="compact-point"><b>2 min:</b> Step back, turn, and move away quickly.</div>
+                    </div>
+                    <div class="action-row" style="margin-top:10px;">
+                        <a class="btn btn-primary" href="/live-location" style="text-decoration:none;">Open Live Tracking</a>
+                        <a class="btn btn-ghost" href="/user-management" style="text-decoration:none;">Check Emergency Contacts</a>
+                        <a class="btn btn-ghost" href="/profile-page" style="text-decoration:none;">Update Profile Details</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+    <script>
+        (async () => {
+            await wsApp.ensureSession();
+            wsApp.initTheme();
+        })();
+    </script>
+</body>
+</html>

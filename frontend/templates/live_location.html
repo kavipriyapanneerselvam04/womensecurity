@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Tracking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="logo brand-wrap"><div class="brand-text">SafeHer</div><img class="brand-logo" src="{{ url_for('static', filename='images/safeher-logo.svg') }}" alt="SafeHer Logo"></div>
+            <nav class="menu">
+                <a href="/dashboard">Dashboard</a>
+                <a class="active" href="/live-location">Live Tracking</a>
+                <a href="/geofence-page">Geo-Fence</a>
+                <a href="/device-status">Device Status</a>
+                <a href="/user-management">User Management</a>
+                <a href="/alert-history">Alert History</a>
+                <a href="/self-defense">Self Defense</a>
+                <a href="/profile-page">Profile</a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn btn-danger menu-logout" type="button" onclick="wsApp.logoutUser()">Logout</button>
+            </div>
+        </aside>
+        <main class="main">
+            <div class="topbar">
+                <h1>Live Location (Your Current Browser GPS)</h1>
+                <div class="topbar-info">
+                    <div class="muted" style="color:#f0eaff;">User: <span id="currentUserName">-</span></div>
+                    <div id="gpsState" class="muted" style="color:#f0eaff;">Waiting for location permission...</div>
+                    <div class="muted" style="color:#f0eaff;">Current Coordinates: <span id="currentCoords">--</span></div>
+                    <div class="muted" style="color:#f0eaff;">Current Place: <span id="currentPlace">--</span></div>
+                    <div class="muted" style="color:#f0eaff;">Location Info: <span id="locationMeta">--</span></div>
+                </div>
+                <div class="topbar-actions">
+                    <button class="btn btn-ghost theme-toggle" type="button" aria-label="Toggle theme"><span class="theme-icon">&#9789;</span></button>
+                </div>
+            </div>
+            <div class="card">
+                <p class="muted">Allow browser location permission to track your real current location.</p>
+                <div class="action-row">
+                    <button class="btn btn-primary" onclick="wsApp.showCurrentLocation()">Show Current Location</button>
+                    <button class="btn btn-ghost" onclick="wsApp.showGpsHelp()">How to Enable GPS</button>
+                    <button class="btn btn-primary" onclick="wsApp.shareLiveLocation()">Share Live Location</button>
+                </div>
+                <p id="shareLocationMessage" class="muted"></p>
+                <p></p>
+                <div id="liveMap"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+    <script>
+        (async () => {
+            await wsApp.ensureSession();
+            wsApp.initTheme();
+            await wsApp.loadDashboardSummary();
+            initLiveTrackingMap();
+        })();
+    </script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="logo brand-wrap"><div class="brand-text">SafeHer</div><img class="brand-logo" src="{{ url_for('static', filename='images/safeher-logo.svg') }}" alt="SafeHer Logo"></div>
+            <nav class="menu">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/live-location">Live Tracking</a>
+                <a class="active" href="/alerts-page">Alerts</a>
+                <a href="/geofence-page">Geo-Fence</a>
+                <a href="/device-status">Device Status</a>
+                <a href="/user-management">User Management</a>
+                <a href="/alert-history">Alert History</a>
+                <a href="/self-defense">Self Defense</a>
+                <a href="/profile-page">Profile</a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn btn-danger menu-logout" type="button" onclick="wsApp.logoutUser()">Logout</button>
+            </div>
+        </aside>
+        <main class="main">
+            <div class="topbar">
+                <h1>Alert Monitoring</h1>
+                <div class="topbar-tools">
+                    <button class="btn btn-primary" onclick="refreshAlerts()">Refresh</button>
+                </div>
+                <div class="topbar-actions">
+                    <button class="btn btn-ghost theme-toggle" type="button" aria-label="Toggle theme"><span class="theme-icon">&#9789;</span></button>
+                </div>
+            </div>
+            <div class="card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>User</th>
+                            <th>Latitude</th>
+                            <th>Longitude</th>
+                            <th>Timestamp</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="alertsTableBody"></tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/alerts.js') }}"></script>
+    <script>
+        (async () => {
+            await wsApp.ensureSession();
+            wsApp.initTheme();
+            refreshAlerts();
+        })();
+    </script>
+</body>
+</html>
+
+
+
+
