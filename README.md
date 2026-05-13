@@ -124,16 +124,5 @@ Configured in `backend/config.py`:
 - Password: `xxx`
 - Database: `women_safety_db`
 
----
-
-## 👩‍💻 Author
-
-**Kavi Priya**
-
-- GitHub: https://github.com/kavipriyapanneerselvam04
-- LinkedIn: https://www.linkedin.com/in/kavipriya-p-a55752299/
 
 
-## 📄 License
-
-This project is developed for educational and portfolio purposes.
